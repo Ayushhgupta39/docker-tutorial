@@ -29,3 +29,27 @@ Images define the initial filesystem state of new containers. They bundle your a
 `docker run <image_id>`
 
 - You only create an image once.
+
+## Volumes
+
+1. Used for persisting data across starts
+2. Specifically useful for things like databases
+
+### How? 
+- `docker volume create <volume_database>`
+- `docker run -v volume_database:/data/db -p 27017:27017 mongo`
+
+
+## Networks
+Networks are used to connect one container to another container to give them logical
+binding.
+
+### How?
+- `docker network create my_custom_network`
+- `docker run -p 3000:3000 --name backend --network my_custom_network <image_tag>`
+
+- `docker run -v volume_database:/data/db`
+   `--name mongo`
+   `--network my_custom_network`
+   `-p 27017:27017`
+   `mongo`
